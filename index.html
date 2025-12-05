@@ -17,7 +17,7 @@
 *{margin:0;padding:0;box-sizing:border-box;font-family:Arial,Helvetica,sans-serif;color:var(--cor-texto)}
 body{background:var(--cor-fund)}
 
-/* ========= HEADER CHAMATIVO ========= */
+/* ========= HEADER COM FOGO ========= */
 header{
   text-align:center;
   padding:4rem 1rem 3rem;
@@ -25,18 +25,33 @@ header{
   position:relative;
   overflow:hidden;
 }
-/* faixa vermelha atrás do título */
+/* listras com fogos */
 header::before{
   content:'';
   position:absolute;
   inset:0;
-  background: repeating-linear-gradient(
-    45deg,
-    rgba(226,0,0,.15) 0 2px,
-    transparent 2px 20px
-  );
+  background:
+    repeating-linear-gradient(45deg, rgba(226,0,0,.15) 0 2px, transparent 2px 40px),
+    repeating-linear-gradient(-45deg, rgba(226,0,0,.15) 0 2px, transparent 2px 40px);
   pointer-events:none;
 }
+/* fogos flutuantes */
+header::after{
+  content:'🔥';
+  position:absolute;
+  font-size:2rem;
+  opacity:.35;
+  animation: flame 6s ease-in-out infinite;
+}
+header::after{top:15%;left:8%;animation-delay:0s}
+header span:nth-child(1){position:absolute;top:25%;right:10%;font-size:2.2rem;opacity:.3;animation: flame 7s ease-in-out infinite;animation-delay:.5s}
+header span:nth-child(2){position:absolute;bottom:20%;left:12%;font-size:2.4rem;opacity:.3;animation: flame 8s ease-in-out infinite;animation-delay:1s}
+header span:nth-child(3){position:absolute;bottom:25%;right:15%;font-size:2rem;opacity:.3;animation: flame 7.5s ease-in-out infinite;animation-delay:1.5s}
+@keyframes flame{
+  0%,100%{transform:scale(1) rotate(0deg);}
+  50%{transform:scale(1.15) rotate(5deg);}
+}
+
 header h1{
   display:inline-block;
   font-size:3rem;
@@ -80,6 +95,7 @@ footer{text-align:center;padding:2rem .5rem;font-size:.8rem;opacity:.6}
 
 <!-- ========= HEADER ========= -->
 <header>
+  <span>🔥</span><span>🔥</span><span>🔥</span>
   <h1>MODELOS PREMIUM</h1>
   <ul class="vantagens">
     <li>🔓 Acesso direto a 10 modelos exclusivas – sem censura</li>
